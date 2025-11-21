@@ -1,0 +1,23 @@
+```
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+*~
+
+# Entornos virtuales Python
+venv/
+env/
+.venv/
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Archivos de configuración personal
+.env
+*.log
+
+# Carpetas de caché
+__pycache__/
+*.pyc
+
+
