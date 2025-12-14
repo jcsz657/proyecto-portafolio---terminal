@@ -1,0 +1,43 @@
+# Job Hunter - Archivos a ignorar
+
+# IMPORTANTE: Datos sensibles (NO SUBIR A GITHUB)
+config/profile.json
+
+# Base de datos (contiene datos locales)
+data/jobs.db
+data/*.db
+data/*.db-*
+
+# Logs (pueden ser muy grandes)
+logs/*.log
+logs/*.log.*
+
+# Archivos temporales
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+
+# Entornos virtuales
+venv/
+env/
+ENV/
+
+# Archivos de respaldo
+*.backup
+*.bak
+*~
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# No ignorar estos archivos importantes
+!.gitkeep

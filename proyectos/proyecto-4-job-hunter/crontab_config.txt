@@ -1,0 +1,10 @@
+# Job Hunter - Búsqueda automática de empleos
+# Se ejecuta dos veces al día: 9:00 AM y 6:00 PM
+#
+# Formato: minuto hora día mes día_semana comando
+#
+# 9:00 AM - Búsqueda matutina
+0 9 * * * /home/juliocesar/job-hunter/run_job_search.sh
+
+# 6:00 PM - Búsqueda vespertina
+0 18 * * * /home/juliocesar/job-hunter/run_job_search.sh

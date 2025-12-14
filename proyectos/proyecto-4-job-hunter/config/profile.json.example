@@ -1,0 +1,130 @@
+{
+  "perfil": {
+    "profesion_actual": "Ingeniero Industrial",
+    "profesion_objetivo": "Data Analyst Junior",
+    "nivel": "Junior / Entry-level (0-2 años)",
+    "habilidades": [
+      "Excel",
+      "Power BI",
+      "SQL Server",
+      "Six Sigma",
+      "Análisis de datos"
+    ],
+    "keywords": [
+      "data analyst",
+      "analista de datos",
+      "business intelligence analyst",
+      "analista bi",
+      "junior data analyst",
+      "analista de datos junior",
+      "analista de información",
+      "data analyst entry level",
+      "analista BI junior",
+      "analista business intelligence junior",
+      "analista de datos sin experiencia",
+      "practicante datos",
+      "practicante analista",
+      "trainee data",
+      "auxiliar de datos"
+    ],
+    "excluir_titulos": [
+      "senior",
+      "sr.",
+      "sr ",
+      "lead",
+      "principal",
+      "staff",
+      "manager",
+      "head",
+      "director",
+      "chief",
+      "architect",
+      "expert",
+      "developer",
+      "desarrollador",
+      "engineer",
+      "ingeniero",
+      "scientist",
+      "3 años",
+      "4 años",
+      "5 años",
+      "3+ years",
+      "4+ years",
+      "5+ years",
+      "scripter",
+      "programmer",
+      "crypto",
+      "trader",
+      "trading",
+      "sales",
+      "marketing",
+      "qa",
+      "qa engineer",
+      "qa automation",
+      "quality assurance",
+      "aseguramiento de calidad",
+      "calidad de software",
+      "devops",
+      "sysadmin",
+      "network",
+      "full-stack",
+      "fullstack",
+      "frontend",
+      "backend",
+      "back-end",
+      "back end",
+      "product coordinator",
+      "product manager",
+      "coordinator",
+      "agentic",
+      "engineering intern"
+    ],
+    "experiencia_maxima_anos": 2
+  },
+  "preferencias": {
+    "modalidad": [
+      "remota",
+      "híbrida",
+      "remote",
+      "hybrid"
+    ],
+    "ubicaciones": [
+      "Colombia",
+      "Latam",
+      "Latin America",
+      "Remote",
+      "Worldwide"
+    ],
+    "idioma": "español",
+    "salario_minimo": {
+      "cop": 2500000,
+      "usd": 600
+    }
+  },
+  "apis": {
+    "get_on_board": {
+      "endpoint": "https://www.getonbrd.com/api/v0/search/jobs",
+      "activa": true
+    },
+    "remotive": {
+      "endpoint": "https://remotive.com/api/remote-jobs",
+      "activa": true,
+      "limite_diario": 4
+    },
+    "jooble": {
+      "endpoint": "https://jooble.org/api",
+      "api_key": "YOUR_JOOBLE_API_KEY_HERE",
+      "activa": false,
+      "location": "Colombia",
+      "radius": 0,
+      "results_per_page": 20
+    }
+  },
+  "telegram": {
+    "activo": true,
+    "bot_token": "YOUR_BOT_TOKEN_HERE",
+    "chat_id": "YOUR_CHAT_ID_HERE",
+    "notificar_por_oferta": true,
+    "notificar_resumen": true
+  }
+}

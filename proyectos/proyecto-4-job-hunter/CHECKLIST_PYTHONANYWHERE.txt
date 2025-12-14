@@ -1,0 +1,215 @@
+╔═══════════════════════════════════════════════════════════════════════╗
+║           CHECKLIST - Deployment en PythonAnywhere                    ║
+║                   Job Hunter - Guía Rápida                            ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+🎯 OBJETIVO: Tener búsquedas automáticas 24/7 en la nube (gratis)
+
+═══════════════════════════════════════════════════════════════════════
+
+📝 PASO 1: CREAR CUENTA
+───────────────────────────────────────────────────────────────────────
+
+[ ] Ir a: https://www.pythonanywhere.com
+[ ] Click en "Create a Beginner account"
+[ ] Completar registro (username, email, password)
+[ ] Confirmar email
+[ ] Iniciar sesión
+
+═══════════════════════════════════════════════════════════════════════
+
+📦 PASO 2: SUBIR ARCHIVOS
+───────────────────────────────────────────────────────────────────────
+
+[ ] En PythonAnywhere, ir a "Files"
+[ ] Crear directorio: job-hunter
+[ ] Subir estos archivos/carpetas:
+
+    Estructura necesaria:
+
+    job-hunter/
+    ├── config/
+    │   └── profile.json          ← TU ARCHIVO (¡importante!)
+    ├── src/
+    │   ├── job_search.py
+    │   ├── telegram_notifier.py
+    │   └── get_chat_id.py
+    ├── data/
+    │   └── .gitkeep
+    ├── logs/
+    │   └── .gitkeep
+    └── requirements.txt
+
+    ⚠️ IMPORTANTE: Usa TU archivo profile.json con tus datos reales
+
+═══════════════════════════════════════════════════════════════════════
+
+🔧 PASO 3: INSTALAR DEPENDENCIAS
+───────────────────────────────────────────────────────────────────────
+
+[ ] Abrir una "Bash console" en PythonAnywhere
+[ ] Ejecutar:
+
+    cd ~/job-hunter
+    pip3 install --user -r requirements.txt
+
+[ ] Verificar:
+
+    python3 -c "import requests; print('OK')"
+
+═══════════════════════════════════════════════════════════════════════
+
+✅ PASO 4: VERIFICAR CONFIGURACIÓN
+───────────────────────────────────────────────────────────────────────
+
+[ ] Verificar que profile.json tenga:
+    [ ] bot_token (NO "YOUR_BOT_TOKEN_HERE")
+    [ ] chat_id (NO "YOUR_CHAT_ID_HERE")
+    [ ] Tus keywords
+    [ ] Tus preferencias
+
+[ ] Validar JSON:
+
+    python3 -m json.tool config/profile.json
+
+═══════════════════════════════════════════════════════════════════════
+
+🧪 PASO 5: PROBAR EL SISTEMA
+───────────────────────────────────────────────────────────────────────
+
+[ ] En la Bash console, ejecutar:
+
+    cd ~/job-hunter
+    python3 src/job_search.py
+
+[ ] Verificar:
+    [ ] El script se ejecuta sin errores
+    [ ] Recibes notificaciones en Telegram
+    [ ] Se crea el archivo data/jobs.db
+    [ ] Se crean logs en logs/search.log
+
+═══════════════════════════════════════════════════════════════════════
+
+⏰ PASO 6: CONFIGURAR TAREA PROGRAMADA
+───────────────────────────────────────────────────────────────────────
+
+[ ] Ir a pestaña "Tasks" en PythonAnywhere
+[ ] En "Scheduled tasks", configurar:
+
+    Hora (UTC):
+    [ ] Para 9 AM Colombia: 14:00
+    [ ] Para 6 PM Colombia: 23:00
+
+    ⚠️ Solo puedes elegir UNA hora en el plan gratuito
+
+    Comando:
+    [ ] Copiar exactamente (reemplaza TU_USERNAME):
+
+        cd /home/TU_USERNAME/job-hunter && python3 src/job_search.py
+
+    Ejemplo:
+        cd /home/juliocesar/job-hunter && python3 src/job_search.py
+
+[ ] Click en "Create"
+[ ] Verificar que aparece en la lista
+
+═══════════════════════════════════════════════════════════════════════
+
+📊 PASO 7: VERIFICAR FUNCIONAMIENTO
+───────────────────────────────────────────────────────────────────────
+
+[ ] Esperar a la hora programada
+[ ] Verificar notificación en Telegram
+[ ] Revisar logs:
+
+    En "Files" → job-hunter/logs/search.log
+
+[ ] Ver ofertas guardadas:
+
+    cd ~/job-hunter
+    python3 -c "import sqlite3; conn = sqlite3.connect('data/jobs.db');
+    cursor = conn.cursor(); cursor.execute('SELECT COUNT(*) FROM jobs');
+    print(f'Total: {cursor.fetchone()[0]} ofertas')"
+
+═══════════════════════════════════════════════════════════════════════
+
+✨ RESULTADO FINAL
+───────────────────────────────────────────────────────────────────────
+
+Una vez completado:
+
+✅ Tu sistema corre 24/7 en la nube
+✅ No necesitas tu computador encendido
+✅ Recibes notificaciones automáticas en Telegram
+✅ Todo es 100% GRATUITO
+
+═══════════════════════════════════════════════════════════════════════
+
+🎓 CONVERSIÓN DE HORARIOS (Colombia a UTC)
+───────────────────────────────────────────────────────────────────────
+
+Colombia es UTC-5, entonces:
+
+    6:00 AM → 11:00 UTC
+    7:00 AM → 12:00 UTC
+    8:00 AM → 13:00 UTC
+    9:00 AM → 14:00 UTC ← RECOMENDADO
+   10:00 AM → 15:00 UTC
+   12:00 PM → 17:00 UTC
+    3:00 PM → 20:00 UTC
+    6:00 PM → 23:00 UTC ← RECOMENDADO
+    9:00 PM → 02:00 UTC (día siguiente)
+
+═══════════════════════════════════════════════════════════════════════
+
+⚠️ LIMITACIONES DEL PLAN GRATUITO
+───────────────────────────────────────────────────────────────────────
+
+• Solo 1 tarea programada
+• Se ejecuta 1 vez al día
+• 512 MB de almacenamiento
+• Suficiente para este proyecto
+
+Para ejecutar 2 veces al día → Plan Hacker ($5/mes)
+
+═══════════════════════════════════════════════════════════════════════
+
+🆘 SOLUCIÓN DE PROBLEMAS
+───────────────────────────────────────────────────────────────────────
+
+❌ "No module named 'requests'"
+   → pip3 install --user requests
+
+❌ "No such file or directory"
+   → Verifica la ruta en la tarea programada
+
+❌ No recibo notificaciones
+   → Verifica bot_token y chat_id
+   → Ejecuta: python3 src/telegram_notifier.py
+
+❌ La tarea no se ejecuta
+   → Verifica que la hora esté en UTC
+   → Prueba el comando manualmente
+
+═══════════════════════════════════════════════════════════════════════
+
+📚 DOCUMENTACIÓN COMPLETA
+───────────────────────────────────────────────────────────────────────
+
+Para más detalles, consulta:
+
+• DEPLOYMENT_PYTHONANYWHERE.md  - Guía completa paso a paso
+• README.md                      - Documentación del proyecto
+• COMANDOS_UTILES.txt            - Comandos de referencia
+
+═══════════════════════════════════════════════════════════════════════
+
+🎉 ¡ÉXITO!
+
+Una vez configurado, tu sistema buscará empleos automáticamente
+todos los días y te notificará por Telegram cuando encuentre
+ofertas nuevas que coincidan con tu perfil.
+
+¡Mucha suerte en tu búsqueda de empleo como Data Analyst! 🎯
+
+═══════════════════════════════════════════════════════════════════════

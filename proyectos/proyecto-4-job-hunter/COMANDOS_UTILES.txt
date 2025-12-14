@@ -1,0 +1,164 @@
+═══════════════════════════════════════════════════════════════════════
+                      COMANDOS ÚTILES - JOB HUNTER
+═══════════════════════════════════════════════════════════════════════
+
+📊 VER ESTADÍSTICAS
+───────────────────────────────────────────────────────────────────────
+
+# Total de ofertas guardadas
+python3 -c "import sqlite3; conn = sqlite3.connect('data/jobs.db'); cursor = conn.cursor(); cursor.execute('SELECT COUNT(*) FROM jobs'); print(f'Total: {cursor.fetchone()[0]} ofertas')"
+
+# Ofertas por fuente
+python3 -c "import sqlite3; conn = sqlite3.connect('data/jobs.db'); cursor = conn.cursor(); cursor.execute('SELECT fuente, COUNT(*) FROM jobs GROUP BY fuente'); print('\n'.join([f'{f}: {c}' for f, c in cursor.fetchall()]))"
+
+# Ofertas por modalidad
+python3 -c "import sqlite3; conn = sqlite3.connect('data/jobs.db'); cursor = conn.cursor(); cursor.execute('SELECT modalidad, COUNT(*) FROM jobs GROUP BY modalidad'); print('\n'.join([f'{m}: {c}' for m, c in cursor.fetchall()]))"
+
+
+📝 VER LOGS
+───────────────────────────────────────────────────────────────────────
+
+# Ver log de búsquedas en tiempo real
+tail -f logs/search.log
+
+# Ver log de ejecuciones automáticas
+tail -f logs/cron.log
+
+# Ver últimas 50 líneas
+tail -50 logs/cron.log
+
+# Ver solo notificaciones enviadas
+grep "Notificación enviada" logs/cron.log
+
+
+⏰ GESTIONAR CRON
+───────────────────────────────────────────────────────────────────────
+
+# Ver configuración actual
+crontab -l
+
+# Editar horarios
+crontab -e
+
+# Desactivar temporalmente (comentar líneas con #)
+crontab -e
+# Agregar # al inicio de las líneas
+
+# Reactivar (quitar los #)
+crontab -e
+
+# Eliminar todo el crontab
+crontab -r
+
+
+▶️ EJECUTAR BÚSQUEDAS
+───────────────────────────────────────────────────────────────────────
+
+# Búsqueda manual
+cd ~/job-hunter && python3 src/job_search.py
+
+# Probar script de automatización
+~/job-hunter/run_job_search.sh
+
+# Ejecutar en background
+cd ~/job-hunter && python3 src/job_search.py &
+
+
+📱 TELEGRAM
+───────────────────────────────────────────────────────────────────────
+
+# Probar conexión
+python3 src/telegram_notifier.py
+
+# Ver configuración
+cat config/profile.json | grep -A 5 telegram
+
+# Obtener nuevo chat_id (si cambias de bot)
+python3 src/get_chat_id.py
+
+
+🗄️ BASE DE DATOS
+───────────────────────────────────────────────────────────────────────
+
+# Ver todas las ofertas
+python3 -c "import sqlite3; conn = sqlite3.connect('data/jobs.db'); cursor = conn.cursor(); cursor.execute('SELECT titulo, empresa, modalidad FROM jobs'); [print(f'{t} - {e} ({m})') for t, e, m in cursor.fetchall()]"
+
+# Buscar por keyword
+python3 -c "import sqlite3, sys; keyword='data analyst'; conn = sqlite3.connect('data/jobs.db'); cursor = conn.cursor(); cursor.execute('SELECT titulo, url FROM jobs WHERE titulo LIKE ?', (f'%{keyword}%',)); [print(f'{t}\n  {u}\n') for t, u in cursor.fetchall()]"
+
+# Eliminar ofertas antiguas (más de 30 días)
+python3 -c "import sqlite3; from datetime import datetime, timedelta; conn = sqlite3.connect('data/jobs.db'); cursor = conn.cursor(); fecha_limite = (datetime.now() - timedelta(days=30)).isoformat(); cursor.execute('DELETE FROM jobs WHERE fecha_encontrado < ?', (fecha_limite,)); conn.commit(); print(f'Eliminadas: {cursor.rowcount} ofertas')"
+
+# Limpiar TODA la base de datos (¡CUIDADO!)
+rm data/jobs.db && python3 src/job_search.py
+
+
+🔧 MANTENIMIENTO
+───────────────────────────────────────────────────────────────────────
+
+# Ver espacio usado por logs
+du -sh logs/
+
+# Limpiar logs antiguos (mantener últimas 1000 líneas)
+tail -1000 logs/cron.log > logs/cron.log.tmp && mv logs/cron.log.tmp logs/cron.log
+tail -1000 logs/search.log > logs/search.log.tmp && mv logs/search.log.tmp logs/search.log
+
+# Backup de la base de datos
+cp data/jobs.db data/jobs_backup_$(date +%Y%m%d).db
+
+# Ver tamaño de la base de datos
+ls -lh data/jobs.db
+
+
+⚙️ CONFIGURACIÓN
+───────────────────────────────────────────────────────────────────────
+
+# Editar perfil y preferencias
+nano config/profile.json
+
+# Ver perfil actual
+cat config/profile.json
+
+# Verificar sintaxis JSON
+python3 -m json.tool config/profile.json
+
+
+📈 REPORTES
+───────────────────────────────────────────────────────────────────────
+
+# Ofertas encontradas por día
+python3 -c "import sqlite3; conn = sqlite3.connect('data/jobs.db'); cursor = conn.cursor(); cursor.execute(\"SELECT DATE(fecha_encontrado) as fecha, COUNT(*) FROM jobs GROUP BY fecha ORDER BY fecha DESC LIMIT 7\"); [print(f'{f}: {c} ofertas') for f, c in cursor.fetchall()]"
+
+# Categorías más frecuentes
+python3 -c "import sqlite3; conn = sqlite3.connect('data/jobs.db'); cursor = conn.cursor(); cursor.execute('SELECT categoria, COUNT(*) as total FROM jobs GROUP BY categoria ORDER BY total DESC LIMIT 10'); [print(f'{c}: {t}') for c, t in cursor.fetchall()]"
+
+
+🔍 TROUBLESHOOTING
+───────────────────────────────────────────────────────────────────────
+
+# Verificar que cron está corriendo
+sudo service cron status
+
+# Ver logs del sistema para cron
+grep CRON /var/log/syslog | tail -20
+
+# Probar conectividad a APIs
+curl -I https://www.getonbrd.com/api/v0/search/jobs
+curl -I https://remotive.com/api/remote-jobs
+
+# Verificar Python y librerías
+python3 --version
+python3 -c "import requests; print('requests OK')"
+
+
+═══════════════════════════════════════════════════════════════════════
+
+💡 TIPS:
+
+• Los logs se guardan automáticamente en logs/
+• Las notificaciones solo se envían cuando hay ofertas NUEVAS
+• Puedes ejecutar búsquedas manuales en cualquier momento
+• El cron respeta los límites de las APIs (max 4x/día Remotive)
+• La base de datos previene duplicados automáticamente
+
+═══════════════════════════════════════════════════════════════════════

@@ -1,0 +1,4 @@
+# Job Hunter - Dependencias de Python
+# Para instalar: pip install -r requirements.txt
+
+requests>=2.31.0

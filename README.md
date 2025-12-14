@@ -12,7 +12,8 @@ mi-portafolio-datos/
 ├── proyectos/
 │   ├── proyecto-1-ventas/          # Análisis de ventas mensuales
 │   ├── proyecto-2-clientes/        # Segmentación de clientes
-│   └── proyecto-3-marketing/       # Análisis de campañas de marketing
+│   ├── proyecto-3-marketing/       # Análisis de campañas de marketing
+│   └── proyecto-4-job-hunter/      # Bot de búsqueda de empleos
 └── recursos/
     ├── datasets/                   # Datasets de ejemplo
     └── documentacion/              # Guías y documentación
@@ -35,6 +36,11 @@ Evaluación de efectividad de campañas digitales y cálculo de ROI por canal.
 
 **Stack:** Python, NumPy, Plotly
 
+### 4. 🤖 Job Hunter - Bot de Búsqueda de Empleos
+Bot automatizado que busca ofertas Junior de Data Analyst en múltiples plataformas, filtra con 49 criterios inteligentes y envía notificaciones por Telegram.
+
+**Stack:** Python, SQLite, Telegram Bot API, REST APIs (Get on Board, Remotive, Jooble), Cron
+
 ## 🛠️ Tecnologías
 
 **Lenguajes:**
@@ -45,6 +51,12 @@ Evaluación de efectividad de campañas digitales y cálculo de ROI por canal.
 - Pandas, NumPy
 - Scikit-learn
 - Matplotlib, Seaborn, Plotly
+
+**APIs y Automatización:**
+- Telegram Bot API
+- REST APIs (Get on Board, Remotive, Jooble)
+- Cron (automatización de tareas)
+- SQLite
 
 **Herramientas:**
 - Jupyter Notebook
