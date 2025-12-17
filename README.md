@@ -13,7 +13,8 @@ mi-portafolio-datos/
 │   ├── proyecto-1-ventas/          # Análisis de ventas mensuales
 │   ├── proyecto-2-clientes/        # Segmentación de clientes
 │   ├── proyecto-3-marketing/       # Análisis de campañas de marketing
-│   └── proyecto-4-job-hunter/      # Bot de búsqueda de empleos
+│   ├── proyecto-4-job-hunter/      # Bot de búsqueda de empleos
+│   └── proyecto-5-artwork-verifier/ # IA para verificación de etiquetas
 └── recursos/
     ├── datasets/                   # Datasets de ejemplo
     └── documentacion/              # Guías y documentación
@@ -41,18 +42,32 @@ Bot automatizado que busca ofertas Junior de Data Analyst en múltiples platafor
 
 **Stack:** Python, SQLite, Telegram Bot API, REST APIs (Get on Board, Remotive, Jooble), Cron
 
+### 5. 🎨 Artwork AI Verifier - Verificación Automática de Etiquetas
+Sistema de IA que compara etiquetas/artes (master vs proveedor) detectando diferencias visuales y de texto automáticamente. Diseñado para industrias reguladas (farmacéutica, alimentos, cosmética).
+
+**Stack:** Python, Flask, OpenCV (Computer Vision), Tesseract OCR, scikit-image (SSIM), pdf2image, HTML/CSS/JavaScript
+
 ## 🛠️ Tecnologías
 
 **Lenguajes:**
 - Python
 - SQL
+- JavaScript
+- HTML/CSS
 
 **Librerías de Análisis:**
 - Pandas, NumPy
 - Scikit-learn
 - Matplotlib, Seaborn, Plotly
 
+**Computer Vision y OCR:**
+- OpenCV (Visión computacional)
+- Tesseract OCR (Reconocimiento de texto)
+- scikit-image (SSIM - similitud estructural)
+- pdf2image (Procesamiento de PDFs)
+
 **APIs y Automatización:**
+- Flask (APIs REST)
 - Telegram Bot API
 - REST APIs (Get on Board, Remotive, Jooble)
 - Cron (automatización de tareas)

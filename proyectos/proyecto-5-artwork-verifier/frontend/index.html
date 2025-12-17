@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artwork AI Verifier - Prototipo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🎨 Artwork AI Verifier</h1>
+            <p class="subtitle">Verificación automática de artes con Inteligencia Artificial</p>
+        </header>
+
+        <!-- Upload Section -->
+        <section class="upload-section">
+            <div class="upload-grid">
+                <!-- Master File -->
+                <div class="upload-box">
+                    <h3>📄 Arte Master (Aprobado)</h3>
+                    <div class="drop-zone" id="masterDropZone">
+                        <p>Arrastra el PDF/imagen aquí</p>
+                        <p class="or">o</p>
+                        <input type="file" id="masterFile" accept=".pdf,.png,.jpg,.jpeg" hidden>
+                        <button onclick="document.getElementById('masterFile').click()" class="btn-upload">
+                            Seleccionar archivo
+                        </button>
+                    </div>
+                    <div class="file-info" id="masterFileInfo"></div>
+                </div>
+
+                <!-- Supplier File -->
+                <div class="upload-box">
+                    <h3>📦 Arte Proveedor</h3>
+                    <div class="drop-zone" id="supplierDropZone">
+                        <p>Arrastra el PDF/imagen aquí</p>
+                        <p class="or">o</p>
+                        <input type="file" id="supplierFile" accept=".pdf,.png,.jpg,.jpeg" hidden>
+                        <button onclick="document.getElementById('supplierFile').click()" class="btn-upload">
+                            Seleccionar archivo
+                        </button>
+                    </div>
+                    <div class="file-info" id="supplierFileInfo"></div>
+                </div>
+            </div>
+
+            <!-- Compare Button -->
+            <button id="compareBtn" class="btn-compare" disabled>
+                🔍 Comparar Artes
+            </button>
+        </section>
+
+        <!-- Loading Section -->
+        <section class="loading-section" id="loadingSection" style="display: none;">
+            <div class="loader"></div>
+            <p id="loadingMessage">Procesando comparación...</p>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section" id="resultsSection" style="display: none;">
+            <h2>📊 Resultados de la Comparación</h2>
+
+            <!-- Overall Status -->
+            <div class="status-card" id="overallStatus">
+                <!-- Populated by JavaScript -->
+            </div>
+
+            <!-- Summary Stats -->
+            <div class="stats-grid" id="statsGrid">
+                <!-- Populated by JavaScript -->
+            </div>
+
+            <!-- Visual Comparison -->
+            <div class="comparison-card">
+                <h3>🖼️ Comparación Visual</h3>
+                <div id="visualComparison">
+                    <!-- Image will be loaded here -->
+                </div>
+                <div id="visualDetails" class="details"></div>
+            </div>
+
+            <!-- Text Comparison -->
+            <div class="comparison-card">
+                <h3>📝 Comparación de Texto (OCR)</h3>
+                <div id="textComparison" class="text-comparison-grid">
+                    <!-- Text comparison will be loaded here -->
+                </div>
+                <div id="textErrors" class="errors-list">
+                    <!-- Errors will be listed here -->
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="actions">
+                <button class="btn-secondary" onclick="resetForm()">
+                    🔄 Nueva Comparación
+                </button>
+                <button class="btn-primary" onclick="downloadReport()">
+                    📥 Descargar Reporte
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Prototipo v1.0 - Artwork AI Verifier | Powered by Python + OpenCV + Tesseract OCR</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
