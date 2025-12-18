@@ -2,7 +2,7 @@
 
 # 📊 Portafolio de Data Analytics & AI
 
-### Julio César Sotomayor
+### Julio César Sotelo Z.
 **Ingeniero Industrial | Data Analyst**
 
 [![GitHub](https://img.shields.io/badge/GitHub-jcsz657-181717?style=for-the-badge&logo=github)](https://github.com/jcsz657)
