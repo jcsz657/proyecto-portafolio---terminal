@@ -11,7 +11,7 @@
 
 ---
 
-### 🎯 Transformando datos en decisiones, automatizando soluciones
+### 🎯 Construyendo mi camino en Data Analytics: de la ingeniería industrial a la industria tech
 
 </div>
 
