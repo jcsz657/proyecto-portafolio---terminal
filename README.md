@@ -29,21 +29,32 @@
 
 ## 👨‍💻 Sobre Mí
 
-Ingeniero Industrial en transición a **Data Analyst**, apasionado por:
+**Ingeniero Industrial transitando a Data Analyst** con experiencia aplicando análisis de datos para optimización de procesos en calidad y producción. He descubierto mi pasión por transformar datos en decisiones estratégicas, y ahora busco llevar estas habilidades al mundo tech.
 
-- 📊 Transformar datos complejos en **insights accionables**
-- 🤖 Automatizar procesos con **IA y Machine Learning**
-- 📈 Crear soluciones que generen **impacto real** en la industria
-- 💡 Resolver problemas usando **Python, SQL y visualización de datos**
+### 🚀 Mi Transición a Tech:
 
-### 🎓 Especializado en:
+Provengo de **optimización industrial**, donde usé datos para mejorar eficiencia operativa con Excel y Power BI. Ahora estoy construyendo skills técnicos para la industria tecnológica:
+
+- 🐍 **Python**: Automatización, análisis de datos, web scraping
+- 💾 **SQL**: Consultas complejas, análisis de bases de datos
+- 🤖 **IA & ML**: Computer Vision, OCR, modelos predictivos
+- 📊 **Visualización**: Power BI, Matplotlib, Plotly, dashboards interactivos
+- ⚙️ **Automatización**: Bots, APIs REST, scripts de Python
+
+### 💼 ¿Por qué Tech?
+
+Mi experiencia en **calidad y producción** me enseñó que los **datos impulsan mejores decisiones**. Ahora quiero aplicar eso a escala con tecnología moderna: construir sistemas automatizados, crear modelos de IA, y resolver problemas complejos con código.
+
+### 🎯 Buscando Oportunidades en:
 ```
-✓ Análisis Exploratorio de Datos (EDA)
-✓ Visualización de Datos (Power BI, Matplotlib, Plotly)
-✓ Computer Vision & OCR
-✓ Automatización de Procesos
-✓ Machine Learning & IA Aplicada
+✓ Data Analyst Junior
+✓ Business Intelligence Analyst
+✓ Data Analytics (Entry-level)
+✓ Junior Python Developer (Data-focused)
+✓ Automatización y Reportes
 ```
+
+**Listo para aportar mi visión analítica y skills técnicos a un equipo tech.**
 
 ---
 
